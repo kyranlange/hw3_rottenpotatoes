@@ -12,7 +12,7 @@ end
 #   on the same page
 
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
-  regexp = Regexp.new ".*#{e1}.*#{e2}"
+  regexp = Regexp.new ".*#{e1}.*#{e2}", Regexp::MULTILINE
   page.body.should =~ regexp
 end
 
