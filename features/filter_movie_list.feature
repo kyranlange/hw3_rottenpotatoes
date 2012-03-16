@@ -22,11 +22,7 @@ Background: movies have been added to database
   And  I am on the RottenPotatoes home page
   
 Scenario: restrict to movies with 'PG' or 'R' ratings
-  When I check "ratings_PG"
-  And I check "ratings_R"
-  And I uncheck "ratings_G"
-  And I uncheck "ratings_PG-13"
-  And I uncheck "ratings_NC-17"
+  When I check the following ratings: PG, R
   And I press "Refresh"
   Then I should see "The Terminator"
   And I should see "When Harry Met Sally"
@@ -37,7 +33,12 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I should not see "The Help"
 
 Scenario: no ratings selected
-  # see assignment
+  When I uncheck the following ratings: G, PG, PG-13, NC-17, R
+  And I press "Refresh"
+  Then I should see none of the movies
 
 Scenario: all ratings selected
-  # see assignment
+  When I check the following ratings: G, PG, PG-13, NC-17, R
+  And I press "Refresh"
+  Then I should see all of the movies
+  
