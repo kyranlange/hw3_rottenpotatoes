@@ -52,3 +52,7 @@ end
 Then /I should see none of the movies/ do
   all("table#movies tbody tr").size.should == 0
 end
+
+Then /the director of "(.*)" should be "(.*)"/ do |title, director|
+  Movie.find_by_title(title).director.should == director
+end
