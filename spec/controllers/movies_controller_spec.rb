@@ -4,6 +4,7 @@ describe MoviesController do
   describe 'find similar movies' do
     before :each do
       @m = mock('movie1')
+      @m.stub(:director).and_return("bob")
       @n = mock('movie2')
       @fakeresults = [@m, @n]
     end

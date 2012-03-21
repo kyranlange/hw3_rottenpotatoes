@@ -60,7 +60,7 @@ class MoviesController < ApplicationController
   
   def similar
     movie = Movie.find(params[:id])
-    if movie.director == nil
+    if movie.director.nil?
       $_flash[:warning] = %Q{'#{movie.title}' has no director info}
       redirect_to movies_path
     end
