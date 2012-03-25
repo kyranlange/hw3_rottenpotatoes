@@ -21,7 +21,7 @@ describe MoviesController do
       get :similar, :id => 1
       response.should render_template('similar')
     end
-      
+    
     it 'should make the similar movies available to that template' do
       Movie.stub(:find).and_return(@m)
       @m.stub(:find_similar).and_return(@fakeresults)
